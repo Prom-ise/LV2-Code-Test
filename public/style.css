@@ -30,6 +30,34 @@
     font-weight: 600;
     font-size: 18px;
   }
+  .greetings{
+    color: var(--font-color-sub);
+    
+  }
+
+  .greetings {
+    color: var(--font-color-sub);
+    font-size: 18px;
+    overflow: hidden;
+    border-right: 5px solid black; /* Simulates cursor */
+    white-space: nowrap; /* Keeps text on a single line */
+    animation: typing 4s steps(40, end) infinite, blink 0.5s step-end infinite;
+  }
+  
+  .greetings {
+    color: var(--font-color-sub);
+    font-size: 20px; 
+    overflow: hidden;
+    border-right: 5px solid black; /* Simulates cursor */
+    animation: typing calc(X * 1s) steps(40, end); /* Adjust speed (X) */
+    white-space: nowrap; /* Keeps text on a single line */
+    animation-iteration-count: 1; /* Show each sentence once */
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
   
   .input {
     width: 400px;
