@@ -7,91 +7,140 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://kit.fontawesome.com/c7d3ea0987.js" crossorigin="anonymous"></script>
 </head>
 <style>
-    .body{
+    .body {
         background-color: #2c3e50;
     }
-    #show{
-       border: 2px solid lime;
-       border-radius: 5px;
-       color: whitesmoke;
+
+    #show {
+        border: 2px solid lime;
+        border-radius: 5px;
+        color: whitesmoke;
+        margin: 20vh 20px 20px 20px;
     }
-    .name{
+
+    .name {
         color: lime;
     }
+
+    .img {
+        border-radius: 50%;
+    }
+
     .Btn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 45px;
-  height: 45px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition-duration: .3s;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-  background-color: rgb(255, 65, 65);
-}
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 45px;
+        height: 45px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition-duration: .3s;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+        background-color: rgb(255, 65, 65);
+    }
 
-/* plus sign */
-.sign {
-  width: 100%;
-  transition-duration: .3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    /* plus sign */
+    .sign {
+        width: 100%;
+        transition-duration: .3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.sign svg {
-  width: 17px;
-}
+    .sign svg {
+        width: 17px;
+    }
 
-.sign svg path {
-  fill: white;
-}
-/* text */
-.text {
-  position: absolute;
-  right: 0%;
-  width: 0%;
-  opacity: 0;
+    .sign svg path {
+        fill: white;
+    }
+
+    /* text */
+    .text {
+        position: absolute;
+        right: 0%;
+        width: 0%;
+        opacity: 0;
+        color: white;
+        font-size: 1.2em;
+        font-weight: 600;
+        transition-duration: .3s;
+    }
+
+    /* hover effect on button width */
+    .Btn:hover {
+        width: 125px;
+        border-radius: 40px;
+        transition-duration: .3s;
+    }
+
+    .Btn:hover .sign {
+        width: 30%;
+        transition-duration: .3s;
+        padding-left: 20px;
+    }
+
+    /* hover effect button's text */
+    .Btn:hover .text {
+        opacity: 1;
+        width: 70%;
+        transition-duration: .3s;
+        padding-right: 10px;
+    }
+
+    /* button click effect*/
+    .Btn:active {
+        transform: translate(2px, 2px);
+    }
+    .butter {
   color: white;
-  font-size: 1.2em;
+  text-decoration: none;
+  font-size: 20px;
+  border: none;
+  background: none;
   font-weight: 600;
-  transition-duration: .3s;
-}
-/* hover effect on button width */
-.Btn:hover {
-  width: 125px;
-  border-radius: 40px;
-  transition-duration: .3s;
+  font-family: 'Poppins', sans-serif;
 }
 
-.Btn:hover .sign {
-  width: 30%;
-  transition-duration: .3s;
-  padding-left: 20px;
+.butter::before {
+  margin-left: auto;
 }
-/* hover effect button's text */
-.Btn:hover .text {
-  opacity: 1;
-  width: 70%;
-  transition-duration: .3s;
-  padding-right: 10px;
+
+.butter::after, .butter::before {
+  content: '';
+  width: 5%;
+  height: 2px;
+  border: 1px solid lime;
+  display: block;
+  transition: 0.5s;
 }
-/* button click effect*/
-.Btn:active {
-  transform: translate(2px ,2px);
+
+.butter:hover::after, button:hover::before {
+  width: 100%;
 }
+
+    #todoBox {
+        border: 2px solid lime;
+        border-radius: 5px;
+        color: whitesmoke;
+        display: none;
+    }
+    .but{
+        display: flex;
+    }
 </style>
 
 <body class="body">
-    <div id="show" class="shadow-sm p-3 m-5 my-3">
+    <div id="show" class=" p-3 animate__animated animate__backInDown">
     </div>
-    <div class="my-3 shadow-sm p-3 m-5">
+    <div class="my-3 shadow-sm p-3 m-5 animate__animated animate__flipInY" id="todoBox">
         <h4 class="my-3 text-center">To Do Application</h4>
         <div class="my-2 mx-auto rounded-2 animate__animated animate__rubberBand text-center bg-success text-light w-50"
             style="display: none;" id="save">Saved successfully!😁😁😅</div>
@@ -105,13 +154,15 @@
     <div id="showy" class="text-center shadow-sm p-3 m-5 my-3">
     </div>
 
+    <script src="script2.js"></script>
     <script type="module">
+        
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getDatabase, ref, set, onValue, push, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
         import { getStorage, ref as storef, uploadBytesResumable } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-        
+
         const firebaseConfig = {
             apiKey: "AIzaSyA644UQR5EZhDtk1XYrUxHK0JWUb6mc62I",
             authDomain: "code-test-9329c.firebaseapp.com",
@@ -134,18 +185,22 @@
                 console.log(user);
                 show.innerHTML = `
                 
-                <h1 class=" m-3 text-center">"Welcome to our todo app! <span class="name">${user.displayName}</span> We're delighted to have you here.</h1>
+                <h1 class=" m-3 text-center">"Welcome to our todo app! <span class="name">${user.displayName}</span>. We're delighted to have you here.</h1>
             
                 <div class="">
-            <p class="text-center">You email address is ${user.email}</p>
-            <div class="text-center">
-                Profile Picture:<br>
-                <img src="${user.photoURL}" alt="">
+            <p class="text-white text-center">Email: <span class="name">${user.email}</span></p>
+            <div class="text-center ">
+                <img src="${user.photoURL}" alt="Profile pic" class="img">
             </div>
-            <button class="top Btn">
+            <div class="d-flex">
+            <button class="Btn">
                     <div class="sign" onclick="signO()"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
-  
+ 
   <div class="text">Logout</div></button>
+    <button class="butter ms-auto" onclick="openWork()">
+ Click to Get Started
+</button>
+</div>
             </div>
            
             `} else {
@@ -163,6 +218,8 @@
                 })
         }
         window.signO = signO;
+
+       
 
         const submitTodo = () => {
             let time = new Date().toLocaleTimeString()
@@ -198,6 +255,9 @@
         onValue(newRef, (snapshot) => {
             let data = snapshot.val();
             console.log(data);
+            onAuthStateChanged(auth, (user) => {
+            let todoUser = user.displayName
+                console.log(todoUser);
 
             showy.innerHTML = '';
             // Iterate over each todo item in the data
@@ -206,14 +266,22 @@
                     let todo = data[key]; // Get the todo object
                     // Append HTML for each todo to the showy element
                     showy.innerHTML += `
-                <h5>${todo.inputOne}</h5>
-                <h5>${todo.inputTwo}</h5>
-                <small>${todo.time}, ${todo.date}</small>
-                <button class="btn btn-danger" onclick="deleteTodo('${key}')">Delete</button>
-                <br>
+                    <div class="picture">
+                    <div class="d-flex">
+                <h3 class="text-info headed fw-bolder">${todo.inputOne}</h3>
+                <div class="fonts ms-auto">
+                <i class="fa-solid fa-trash trash me-2" onclick="deleteTodo('${key}')"></i>
+                <!---<i class="fa-solid fa-pen editor" data-bs-toggle="modal" data-bs-target="#editModal"></i>-->
+                </div>
+                </div>
+                <p>${todo.inputTwo}</p>
+                <i class="todo-time">${todo.time}, ${todo.date}</i><i class="ms-5 todo-time">${todoUser}</i>
+                <hr>
+              </div>
             `;
-                }
-            }
+        }
+            }},
+          )
         });
 
         const deleteTodo = (todoKey) => {
