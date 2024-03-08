@@ -19,9 +19,9 @@
   }
   
   .title {
-    color: var(--font-color);
+    color: var(--main-color);
     font-weight: 900;
-    font-size: 24px;
+    font-size: 34px;
     margin-bottom: 25px;
   }
   
@@ -36,22 +36,14 @@
   }
 
   .greetings {
+    text-align: center;
     color: var(--font-color-sub);
     font-size: 18px;
     overflow: hidden;
-    border-right: 5px solid black; /* Simulates cursor */
-    white-space: nowrap; /* Keeps text on a single line */
-    animation: typing 4s steps(40, end) infinite, blink 0.5s step-end infinite;
-  }
-  
-  .greetings {
-    color: var(--font-color-sub);
-    font-size: 20px; 
-    overflow: hidden;
-    border-right: 5px solid black; /* Simulates cursor */
-    animation: typing calc(X * 1s) steps(40, end); /* Adjust speed (X) */
-    white-space: nowrap; /* Keeps text on a single line */
-    animation-iteration-count: 1; /* Show each sentence once */
+    border-right: 3px solid var(--main-color);
+    animation: typing calc(X * 1s) steps(40, end), blink 0.5s 0.5s step-end infinite; 
+    white-space: wrap; 
+    animation-iteration-count: 1;
   }
   
   @keyframes typing {

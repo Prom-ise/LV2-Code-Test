@@ -15,7 +15,7 @@ const typeWriter = () => {
   } else {
     typed = 0;
     currentSentence = (currentSentence + 1) % greetingsText.length; // Loop through sentences
-    setTimeout(typeWriter, 1000); // Pause between sentences (ms)
+    setTimeout(typeWriter, 2500); // Pause between sentences (ms)
   }
 };
 
