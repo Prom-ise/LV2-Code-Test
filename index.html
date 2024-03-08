@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
+</head>
+
+<body>
+
+
+
+
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { GoogleAuthProvider, getAuth, GoogleAuthProvider, GithubAuthProvider, TwitterAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA644UQR5EZhDtk1XYrUxHK0JWUb6mc62I",
+            authDomain: "code-test-9329c.firebaseapp.com",
+            projectId: "code-test-9329c",
+            storageBucket: "code-test-9329c.appspot.com",
+            messagingSenderId: "113116940319",
+            appId: "1:113116940319:web:5c16ade6bc75e14e8aed2a"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
