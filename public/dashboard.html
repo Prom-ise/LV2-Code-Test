@@ -194,8 +194,10 @@
         <input type="text" placeholder="TO DO" class="input my-2 form-control text-light shadow-none" id="todo">
         <textarea rows="3" cols="10" type="text" placeholder="TO DO DESCRIPTION" class="input my-2 form-control text-light shadow-none"
             id="todoDes"></textarea>
-        <input type="file" class="input my-2 form-control" id="filey">
+        
         <button class="butt input w-100 text-center" onclick="submitTodo()">Save To-do</button>
+        <h4 class="my-3 mt-4 text-center">Image Upload</h4>
+        <input type="file" class="input my-2 form-control" id="filey">
         <button class="btn btn-info w-100 my-3" onclick="submitFile()">Submit File</button>
     </div>
     <div id="showy" class="text-center shadow-sm p-3 m-5 my-3 animate__animated animate__flipInX">
@@ -308,7 +310,7 @@
             let todoUser = user.displayName
                 console.log(todoUser);
 
-            showy.innerHTML = '';
+            showy.innerHTML = `<h3 class="name ms-5 todo-time">${todoUser}</h3><h3>TODOS</h3>`;
             // Iterate over each todo item in the data
             for (let key in data) {
                 if (data.hasOwnProperty(key)) {
@@ -321,10 +323,10 @@
                 <h3 class="text-info headed fw-bolder">${todo.inputOne}</h3>
                 <div class="fonts ms-auto">
                 <i class="fa-solid fa-trash trash me-2 text-danger" onclick="deleteTodo('${key}')"></i>
-                <i class="fa-solid fa-pen editor text-success" data-bs-toggle="modal" data-bs-target="#editModal"></i>
+                <i class="fa-solid fa-pen editor text-info" data-bs-toggle="modal" data-bs-target="#editModal"></i>
                 </div>
                 </div>
-                <textarea class="input" rows="5" cols="100"> ${todo.inputTwo}</textarea>
+                <textarea class="input form-control mb-2" rows="5" cols="100"> ${todo.inputTwo}</textarea>
                 
               </div>
               <i class="todo-time">${todo.time}, ${todo.date}</i><i class="name ms-5 todo-time">${todoUser}</i>
