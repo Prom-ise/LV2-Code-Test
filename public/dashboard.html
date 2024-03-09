@@ -190,7 +190,7 @@
 </nav>
         <h4 class="my-3 text-center">To Do Application</h4>
         <div class="my-2 mx-auto rounded-2 animate__animated animate__rubberBand text-center w-50"
-            style="display: block;" id="save">Saved successfully!😁😁😅</div>
+            style="display: none;" id="save">Saved successfully!😁😁😅</div>
         <input type="text" placeholder="TO DO" class="input my-2 form-control text-light shadow-none" id="todo">
         <textarea rows="3" cols="10" type="text" placeholder="TO DO DESCRIPTION" class="input my-2 form-control text-light shadow-none"
             id="todoDes"></textarea>
@@ -310,7 +310,7 @@
             let todoUser = user.displayName
                 console.log(todoUser);
 
-            showy.innerHTML = `<h3 class="name ms-5 todo-time">${todoUser}</h3><h3>TODOS</h3>`;
+            showy.innerHTML = `<span><h3 class="name ms-5 todo-time">${todoUser}</h3></span><span><h3>TODOS</h3></span>`;
             // Iterate over each todo item in the data
             for (let key in data) {
                 if (data.hasOwnProperty(key)) {
