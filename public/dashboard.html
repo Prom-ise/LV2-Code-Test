@@ -131,7 +131,9 @@
 .butter:hover::after, button:hover::before {
   width: 100%;
 }
-
+#todo{
+    text-transform: capitalize;
+}
     #todoBox, #showy {
         border: 2px solid lime;
         border-radius: 5px;
@@ -163,6 +165,16 @@
     border: 2px solid lime;
     background-color: transparent;
   }
+  #save{
+    background-color: lime;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .butt{
+    border-radius: 13px;
+    height: 45px;
+  }
 </style>
 
 <body class="body">
@@ -177,13 +189,13 @@
 </div>
 </nav>
         <h4 class="my-3 text-center">To Do Application</h4>
-        <div class="my-2 mx-auto rounded-2 animate__animated animate__rubberBand text-center bg-success text-light w-50"
-            style="display: none;" id="save">Saved successfully!😁😁😅</div>
+        <div class="my-2 mx-auto rounded-2 animate__animated animate__rubberBand text-center w-50"
+            style="display: block;" id="save">Saved successfully!😁😁😅</div>
         <input type="text" placeholder="TO DO" class="input my-2 form-control text-light shadow-none" id="todo">
-        <input type="text" placeholder="TO DO DESCRIPTION" class="input my-2 form-control text-light shadow-none"
-            id="todoDes">
-        <input type="file" class=" my-2 form-control" id="filey">
-        <button class="btn btn-info w-100 input" onclick="submitTodo()">Submit</button>
+        <textarea rows="3" cols="10" type="text" placeholder="TO DO DESCRIPTION" class="input my-2 form-control text-light shadow-none"
+            id="todoDes"></textarea>
+        <input type="file" class="input my-2 form-control" id="filey">
+        <button class="butt input w-100 text-center" onclick="submitTodo()">Save To-do</button>
         <button class="btn btn-info w-100 my-3" onclick="submitFile()">Submit File</button>
     </div>
     <div id="showy" class="text-center shadow-sm p-3 m-5 my-3 animate__animated animate__flipInX">
@@ -312,10 +324,11 @@
                 <i class="fa-solid fa-pen editor text-success" data-bs-toggle="modal" data-bs-target="#editModal"></i>
                 </div>
                 </div>
-                <p>${todo.inputTwo}</p>
-                <i class="todo-time">${todo.time}, ${todo.date}</i><i class="ms-5 todo-time">${todoUser}</i>
-                <hr>
+                <textarea class="input" rows="5" cols="100"> ${todo.inputTwo}</textarea>
+                
               </div>
+              <i class="todo-time">${todo.time}, ${todo.date}</i><i class="name ms-5 todo-time">${todoUser}</i>
+                <hr>
             `;
         }
             }},
