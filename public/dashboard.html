@@ -310,7 +310,7 @@
             let todoUser = user.displayName
                 console.log(todoUser);
 
-            showy.innerHTML = `<span><h3 class="name ms-5 todo-time">${todoUser}</h3></span><span><h3>TODOS</h3></span>`;
+            showy.innerHTML = `<h3><span class="name ms-5 todo-time">${todoUser}</span> <span> TODOS</span></h3>`;
             // Iterate over each todo item in the data
             for (let key in data) {
                 if (data.hasOwnProperty(key)) {
