@@ -252,27 +252,9 @@
     <script src="script2.js"></script>
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-      import {
-        getAuth,
-        GoogleAuthProvider,
-        onAuthStateChanged,
-        signOut,
-      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-      import {
-        getDatabase,
-        ref,
-        set,
-        onValue,
-        push,
-        child,
-        remove,
-        update,
-      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-      import {
-        getStorage,
-        ref as storef,
-        uploadBytesResumable,
-      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+      import { getAuth, GoogleAuthProvider, onAuthStateChanged, signOut, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+      import { getDatabase, ref, set, onValue, push, child, remove, update, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+      import { getStorage, ref as storef, uploadBytesResumable, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
       const firebaseConfig = {
         apiKey: "AIzaSyA644UQR5EZhDtk1XYrUxHK0JWUb6mc62I",
