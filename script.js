@@ -11,11 +11,11 @@ const typeWriter = () => {
   if (typed < greetingsText[currentSentence].length) {
     greetingsElement.textContent = greetingsText[currentSentence].substring(0, typed + 1);
     typed++;
-    setTimeout(typeWriter, 20); // Adjust speed here (ms between keystrokes)
+    setTimeout(typeWriter, 20);
   } else {
     typed = 0;
-    currentSentence = (currentSentence + 1) % greetingsText.length; // Loop through sentences
-    setTimeout(typeWriter, 2500); // Pause between sentences (ms)
+    currentSentence = (currentSentence + 1) % greetingsText.length;
+    setTimeout(typeWriter, 2500);
   }
 };
 

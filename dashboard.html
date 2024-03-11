@@ -1,240 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <script src="https://kit.fontawesome.com/c7d3ea0987.js" crossorigin="anonymous"></script>
-</head>
-<style>
+    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/c7d3ea0987.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
     .body {
-        background-color: #2c3e50;
+      background-color: #2c3e50;
     }
 
     #show {
-        border: 2px solid lime;
-        border-radius: 5px;
-        color: whitesmoke;
-        margin: 20vh 20px 20px 20px;
+      border: 2px solid lime;
+      border-radius: 5px;
+      color: whitesmoke;
+      margin: 20vh 20px 20px 20px;
     }
 
     .name {
-        color: lime;
+      color: lime;
     }
 
     .img {
-        border-radius: 50%;
+      border-radius: 50%;
     }
-    .img2{
-        margin-top: -5%;
-        border-radius: 50%;
-        height: 60px;
-        width: 60px;
+
+    .img2 {
+      margin-top: -5%;
+      border-radius: 50%;
+      height: 60px;
+      width: 60px;
     }
 
     .Btn {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        width: 45px;
-        height: 45px;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        transition-duration: .3s;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-        background-color: rgb(255, 65, 65);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 45px;
+      height: 45px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition-duration: 0.3s;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+      background-color: rgb(255, 65, 65);
     }
 
     /* plus sign */
     .sign {
-        width: 100%;
-        transition-duration: .3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      width: 100%;
+      transition-duration: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .sign svg {
-        width: 17px;
+      width: 17px;
     }
 
     .sign svg path {
-        fill: white;
+      fill: white;
     }
 
     /* text */
     .text {
-        position: absolute;
-        right: 0%;
-        width: 0%;
-        opacity: 0;
-        color: white;
-        font-size: 1.2em;
-        font-weight: 600;
-        transition-duration: .3s;
+      position: absolute;
+      right: 0%;
+      width: 0%;
+      opacity: 0;
+      color: white;
+      font-size: 1.2em;
+      font-weight: 600;
+      transition-duration: 0.3s;
     }
 
     /* hover effect on button width */
     .Btn:hover {
-        width: 125px;
-        border-radius: 40px;
-        transition-duration: .3s;
+      width: 125px;
+      border-radius: 40px;
+      transition-duration: 0.3s;
     }
 
     .Btn:hover .sign {
-        width: 30%;
-        transition-duration: .3s;
-        padding-left: 20px;
+      width: 30%;
+      transition-duration: 0.3s;
+      padding-left: 20px;
     }
 
     /* hover effect button's text */
     .Btn:hover .text {
-        opacity: 1;
-        width: 70%;
-        transition-duration: .3s;
-        padding-right: 10px;
+      opacity: 1;
+      width: 70%;
+      transition-duration: 0.3s;
+      padding-right: 10px;
     }
 
     /* button click effect*/
     .Btn:active {
-        transform: translate(2px, 2px);
+      transform: translate(2px, 2px);
     }
+
     .butter {
-  color: white;
-  text-decoration: none;
-  font-size: 20px;
-  border: none;
-  background: none;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-}
-
-.butter::before {
-  margin-left: auto;
-}
-
-.butter::after, .butter::before {
-  content: '';
-  width: 5%;
-  height: 2px;
-  border: 1px solid lime;
-  display: block;
-  transition: 0.5s;
-}
-
-.butter:hover::after, button:hover::before {
-  width: 100%;
-}
-#todo{
-    text-transform: capitalize;
-}
-    #todoBox, #showy {
-        border: 2px solid lime;
-        border-radius: 5px;
-        color: whitesmoke;
-        display: none;
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      border: none;
+      background: none;
+      font-weight: 600;
+      font-family: "Poppins", sans-serif;
     }
-   
-    .but{
-        display: flex;
+
+    .butter::before {
+      margin-left: auto;
     }
+
+    .butter::after,
+    .butter::before {
+      content: "";
+      width: 5%;
+      height: 2px;
+      border: 1px solid lime;
+      display: block;
+      transition: 0.5s;
+    }
+
+    .butter:hover::after,
+    button:hover::before {
+      width: 100%;
+    }
+
+    #todo {
+      text-transform: capitalize;
+    }
+
+    #todoBox,
+    #showy {
+      border: 2px solid lime;
+      border-radius: 5px;
+      color: whitesmoke;
+      display: none;
+    }
+
+    .but {
+      display: flex;
+    }
+
     .input {
-    border-radius: 10px;
-    border: 2px solid lime;
-    background-color: #2c3e50;
-    box-shadow: 4px 4px lime;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--font-color);
-    padding: 5px 10px;
-    outline: none;
-  }
-  
-  .input::placeholder {
-    color: #ccc;
-    opacity: 0.8;
-  }
-  
-  .input:focus {
-    border: 2px solid lime;
-    background-color: transparent;
-  }
-  #save{
-    background-color: lime;
-    color: #2c3e50;
-    font-weight: 600;
-    font-size: 18px;
-  }
-  .butt{
-    border-radius: 13px;
-    height: 45px;
-  }
-</style>
+      border-radius: 10px;
+      border: 2px solid lime;
+      background-color: #2c3e50;
+      box-shadow: 4px 4px lime;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--font-color);
+      padding: 5px 10px;
+      outline: none;
+    }
 
-<body class="body">
-    <div id="show" class=" p-3 animate__animated animate__backInDown">
-    </div>
-    <div class="my-3 shadow-sm p-3 m-5 animate__animated animate__flipInY" id="todoBox">
-        <nav><button class="Btn">
-            <div class="sign" onclick="signO()"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+    .input::placeholder {
+      color: #ccc;
+      opacity: 0.8;
+    }
 
-<div class="text">Logout</div></button>
-<div class="text-end" id="imageV">
-</div>
-</nav>
-        <h4 class="my-3 text-center">To Do Application</h4>
-        <div class="my-2 mx-auto rounded-2 animate__animated animate__rubberBand text-center w-50"
-            style="display: none;" id="save">Saved successfully!😁😁😅</div>
-        <input type="text" placeholder="TO DO" class="input my-2 form-control text-light shadow-none" id="todo">
-        <textarea rows="3" cols="10" type="text" placeholder="TO DO DESCRIPTION" class="input my-2 form-control text-light shadow-none"
-            id="todoDes"></textarea>
-        
-        <button class="butt input w-100 text-center" onclick="submitTodo()">Save To-do</button>
-        <h4 class="my-3 mt-4 text-center">Image Upload</h4>
-        <input type="file" class="input my-2 form-control" id="filey">
-        <button class="btn btn-info w-100 my-3" onclick="submitFile()">Submit File</button>
+    .input:focus {
+      border: 2px solid lime;
+      background-color: transparent;
+    }
+
+    #save {
+      background-color: lime;
+      color: #2c3e50;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .butt {
+      border-radius: 13px;
+      height: 45px;
+    }
+  </style>
+
+  <body class="body">
+    <div id="show" class="p-3 animate__animated animate__backInDown"></div>
+    <div
+      class="my-3 shadow-sm p-3 m-5 animate__animated animate__flipInY"
+      id="todoBox"
+    >
+      <nav>
+        <button class="Btn">
+          <div class="sign" onclick="signO()">
+            <svg viewBox="0 0 512 512">
+              <path
+                d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+              ></path>
+            </svg>
+          </div>
+
+          <div class="text">Logout</div>
+        </button>
+        <div class="text-end" id="imageV"></div>
+      </nav>
+      <h4 class="my-3 text-center">To Do Application</h4>
+      <div
+        class="my-2 mx-auto rounded-2 animate__animated animate__rubberBand text-center w-50"
+        style="display: none"
+        id="save"
+      >
+        Saved successfully!😁😁😅
+      </div>
+      <input
+        type="text"
+        placeholder="TO DO"
+        class="input my-2 form-control text-light shadow-none"
+        id="todo"
+      />
+      <textarea
+        rows="3"
+        cols="10"
+        type="text"
+        placeholder="TO DO DESCRIPTION"
+        class="input my-2 form-control text-light shadow-none"
+        id="todoDes"
+      ></textarea>
+
+      <button class="butt input w-100 text-center" onclick="submitTodo()">
+        Save To-do
+      </button>
+      <h4 class="my-3 mt-4 text-center">Image Upload</h4>
+      <input type="file" class="input my-2 form-control" id="filey" />
+      <button class="btn btn-info w-100 my-3" onclick="submitFile()">
+        Submit File
+      </button>
     </div>
-    <div id="showy" class="text-center shadow-sm p-3 m-5 my-3 animate__animated animate__flipInX">
-    </div>
+    <div
+      id="showy"
+      class="text-center shadow-sm p-3 m-5 my-3 animate__animated animate__flipInX"
+    ></div>
 
     <script src="script2.js"></script>
     <script type="module">
-        
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getDatabase, ref, set, onValue, push, child, remove, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-        import { getStorage, ref as storef, uploadBytesResumable } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getAuth,
+        GoogleAuthProvider,
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        onValue,
+        push,
+        child,
+        remove,
+        update,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+      import {
+        getStorage,
+        ref as storef,
+        uploadBytesResumable,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
+      const firebaseConfig = {
+        apiKey: "AIzaSyA644UQR5EZhDtk1XYrUxHK0JWUb6mc62I",
+        authDomain: "code-test-9329c.firebaseapp.com",
+        projectId: "code-test-9329c",
+        storageBucket: "code-test-9329c.appspot.com",
+        messagingSenderId: "113116940319",
+        appId: "1:113116940319:web:5c16ade6bc75e14e8aed2a",
+        databaseURL: "https://code-test-9329c-default-rtdb.firebaseio.com",
+      };
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyA644UQR5EZhDtk1XYrUxHK0JWUb6mc62I",
-            authDomain: "code-test-9329c.firebaseapp.com",
-            projectId: "code-test-9329c",
-            storageBucket: "code-test-9329c.appspot.com",
-            messagingSenderId: "113116940319",
-            appId: "1:113116940319:web:5c16ade6bc75e14e8aed2a",
-            databaseURL: "https://code-test-9329c-default-rtdb.firebaseio.com",
-        };
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const database = getDatabase(app);
+      const storage = getStorage();
+      const db = getDatabase();
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const database = getDatabase(app);
-        const storage = getStorage();
-        const db = getDatabase();
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const uid = user.uid;
-                console.log(`user is signed in, ${uid}`);
-                console.log(user);
-                imageV.innerHTML = `<img src="${user.photoURL}" alt="Profile pic" class="img2">`
-                show.innerHTML = `
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const uid = user.uid;
+          console.log(`user is signed in, ${uid}`);
+          console.log(user);
+          imageV.innerHTML = `<img src="${user.photoURL}" alt="Profile pic" class="img2">`;
+          show.innerHTML = `
             <p>Last signed in time: <span class="name">${user.metadata.lastSignInTime}</span></p>
                 <h1 class=" m-3 text-center">"Welcome to our todo app! <span class="name">${user.displayName}</span>. We're delighted to have you here.</h1>
             
@@ -254,70 +316,66 @@
 </div>
             </div>
            
-            `
+            `;
         } else {
-                console.log('user is signed out');
-                window.location.href = 'index.html'
-            }
-        })
-        const signO = () => {
-            signOut(auth)
-                .then(() => {
-                    console.log('Logged Out');
-                })
-                .catch(() => {
-                    console.log('signing out');
-                })
+          console.log("user is signed out");
+          window.location.href = "index.html";
         }
-        window.signO = signO;
+      });
+      const signO = () => {
+        signOut(auth)
+          .then(() => {
+            console.log("Logged Out");
+          })
+          .catch(() => {
+            console.log("signing out");
+          });
+      };
+      window.signO = signO;
 
-       
+      const submitTodo = () => {
+        let time = new Date().toLocaleTimeString();
+        let date = new Date().toLocaleDateString();
+        // alert("submitted")
+        let inputOne = document.getElementById("todo").value;
+        let inputTwo = document.getElementById("todoDes").value;
+        let save = document.getElementById("save");
 
-        const submitTodo = () => {
-            let time = new Date().toLocaleTimeString()
-            let date = new Date().toLocaleDateString()
-            // alert("submitted")
-            let inputOne = document.getElementById('todo').value
-            let inputTwo = document.getElementById('todoDes').value
-            let save = document.getElementById('save')
-
-            if (inputOne === '' || inputTwo === '') {
-                alert("Fill something inside of me now")
-            } else {
-                let obj = { time, date, inputOne, inputTwo }
-                let dbRef = ref(database, `todos`)
-                let newDbRef = push(dbRef)
-                let saved = set(newDbRef, obj)
-                if (saved) {
-                    console.log("Saved successfully");
-                    document.getElementById('todo').value = '';
-                    document.getElementById('todoDes').value = '';
-                    save.style.display = 'block'
-                    setTimeout(() => {
-                        save.style.display = 'none';
-                    }, 8000);
-                } else {
-                    console.log("failed to save");
-                }
-            }
+        if (inputOne === "" || inputTwo === "") {
+          alert("Fill something inside of me now");
+        } else {
+          let obj = { time, date, inputOne, inputTwo };
+          let dbRef = ref(database, `todos`);
+          let newDbRef = push(dbRef);
+          let saved = set(newDbRef, obj);
+          if (saved) {
+            console.log("Saved successfully");
+            document.getElementById("todo").value = "";
+            document.getElementById("todoDes").value = "";
+            save.style.display = "block";
+            setTimeout(() => {
+              save.style.display = "none";
+            }, 8000);
+          } else {
+            console.log("failed to save");
+          }
         }
-        window.submitTodo = submitTodo
+      };
+      window.submitTodo = submitTodo;
 
-        let newRef = ref(database, `todos`);
-        onValue(newRef, (snapshot) => {
-            let data = snapshot.val();
-            console.log(data);
-            onAuthStateChanged(auth, (user) => {
-            let todoUser = user.displayName
-                console.log(todoUser);
+      let newRef = ref(database, `todos`);
+      onValue(newRef, (snapshot) => {
+        let data = snapshot.val();
+        console.log(data);
+        onAuthStateChanged(auth, (user) => {
+          let todoUser = user.displayName;
+          console.log(todoUser);
 
-            showy.innerHTML = `<h3><span class="name ms-5 todo-time">${todoUser}</span> <span> TODOS</span></h3>`;
-            // Iterate over each todo item in the data
-            for (let key in data) {
-                if (data.hasOwnProperty(key)) {
-                    let todo = data[key]; // Get the todo object
-                    // Append HTML for each todo to the showy element
-                    showy.innerHTML += `
+          showy.innerHTML = `<h3><span class="name ms-5 todo-time">${todoUser}</span> <span> TODOS</span></h3>`;
+          for (let key in data) {
+            if (data.hasOwnProperty(key)) {
+              let todo = data[key];
+              showy.innerHTML += `
                     
                     <div class="picture">
                     <div class="d-flex">
@@ -333,52 +391,45 @@
               <i class="todo-time">${todo.time}, ${todo.date}</i><i class="name ms-5 todo-time">${todoUser}</i>
                 <hr>
             `;
-        }
-            }},
-          )
+            }
+          }
         });
+      });
 
-        function editTodo(todoId, currentTitle, currentBody) {
-  const newTitle = prompt("Enter new title:", currentTitle);
-  const newBody = prompt("Enter new body:", currentBody);
+      function editTodo(todoId, currentTitle, currentBody) {
+        const newTitle = prompt("Enter new title:", currentTitle);
+        const newBody = prompt("Enter new body:", currentBody);
 
-//   let todoRef = ref(database, `todos/${todoKey}`);
-//             remove(todoRef)
+        if (newTitle !== null && newBody !== null) {
+          update(ref(db, `todos/${todoId}`), {
+            inputOne: newTitle,
+            inputTwo: newBody,
+          })
+            .then(() => {
+              alert("Todo updated successfully!");
+            })
+            .catch((error) => {
+              console.error("Error updating todo: ", error);
+            });
+        }
+      }
 
-  if (newTitle !== null && newBody !== null) {
-    update(ref(db, `todos/${todoId}`), {
-    inputOne: newTitle,
-    inputTwo: newBody
-  }).then(() => {
-    alert("Todo updated successfully!");
-    // Optionally, you might want to re-render todos here
-  }).catch((error) => {
-    console.error("Error updating todo: ", error);
-  });
-  }
-}
+      window.editTodo = editTodo;
 
-window.editTodo = editTodo
+      // Render todos initially
+      renderTodos();
 
-// Render todos initially
-renderTodos();
+      function renderTodos() {
+        showy.innerHTML = "";
+        const todosRef = ref(db, "todos");
 
-// Function to render todos
-function renderTodos() {
-    showy.innerHTML = '';
+        onValue(todosRef, (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            const todoKey = childSnapshot.key;
+            const todoData = childSnapshot.val();
 
-// Reference to the todos in the database
-const todosRef = ref(db, 'todos');
-
-// Listen for changes in the todos
-onValue(todosRef, (snapshot) => {
-  snapshot.forEach((childSnapshot) => {
-    const todoKey = childSnapshot.key;
-    const todoData = childSnapshot.val();
-
-    // Create HTML elements for todo
-    const todoElement = document.createElement('div');
-    todoElement.innerHTML = `
+            const todoElement = document.createElement("div");
+            todoElement.innerHTML = `
       <div class="todo">
         <h3 class="todo-title">${todoData.inputOne}</h3>
         <p class="todo-body">${todoData.inputTwo}</p>
@@ -387,42 +438,39 @@ onValue(todosRef, (snapshot) => {
       </div>
     `;
 
-    // Append todo element to the container
-    showy.appendChild(todoElement);
-  });
-});
-}
+            // Appends todo element to the container
+            showy.appendChild(todoElement);
+          });
+        });
+      }
 
+      const deleteTodo = (todoKey) => {
+        let todoRef = ref(database, `todos/${todoKey}`);
+        remove(todoRef)
+          .then(() => {
+            console.log("Todo deleted successfully");
+          })
+          .catch((error) => {
+            console.error("Error deleting todo:", error);
+          });
+      };
+      window.deleteTodo = deleteTodo;
 
-        const deleteTodo = (todoKey) => {
-            let todoRef = ref(database, `todos/${todoKey}`);
-            remove(todoRef)
-                .then(() => {
-                    console.log("Todo deleted successfully");
-                })
-                .catch(error => {
-                    console.error("Error deleting todo:", error);
-                });
-        }
-        window.deleteTodo = deleteTodo
-
-        const submitFile = () => {
-            // alert('Na file I be o')
-            let incomingFile = document.getElementById('filey').files[0]
-            console.log(incomingFile);
-            onAuthStateChanged(auth, (user) => {
-                let filedUser = user.displayName
-                console.log(filedUser);
-                let storageref = storef(storage, `${filedUser}/${incomingFile.name}`)
-                let task = uploadBytesResumable(storageref, incomingFile)
-                if (task) {
-                    console.log('saved');
-                }
-            })
-
-        }
-        window.submitFile = submitFile
+      const submitFile = () => {
+        // alert('Na file I be o')
+        let incomingFile = document.getElementById("filey").files[0];
+        console.log(incomingFile);
+        onAuthStateChanged(auth, (user) => {
+          let filedUser = user.displayName;
+          console.log(filedUser);
+          let storageref = storef(storage, `${filedUser}/${incomingFile.name}`);
+          let task = uploadBytesResumable(storageref, incomingFile);
+          if (task) {
+            console.log("saved");
+          }
+        });
+      };
+      window.submitFile = submitFile;
     </script>
-</body>
-
+  </body>
 </html>
