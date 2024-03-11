@@ -226,6 +226,7 @@
         const auth = getAuth(app);
         const database = getDatabase(app);
         const storage = getStorage();
+        const db = getDatabase();
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -323,7 +324,7 @@
                 <h3 class="text-info headed fw-bolder">${todo.inputOne}</h3>
                 <div class="fonts ms-auto">
                 <i class="fa-solid fa-trash trash me-2 text-danger" onclick="deleteTodo('${key}')"></i>
-                <i class="fa-solid fa-pen editor text-info" data-bs-toggle="modal" data-bs-target="#editModal"></i>
+                <i class="fa-solid fa-pen editor text-info" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editTodo('${key}', '${todo.inputOne}', '${todo.inputTwo}')"></i>
                 </div>
                 </div>
                 <textarea class="input form-control mb-2" rows="5" cols="100"> ${todo.inputTwo}</textarea>
@@ -336,6 +337,62 @@
             }},
           )
         });
+
+        function editTodo(todoId, currentTitle, currentBody) {
+  const newTitle = prompt("Enter new title:", currentTitle);
+  const newBody = prompt("Enter new body:", currentBody);
+
+//   let todoRef = ref(database, `todos/${todoKey}`);
+//             remove(todoRef)
+
+  if (newTitle !== null && newBody !== null) {
+    update(ref(db, `todos/${todoId}`), {
+    inputOne: newTitle,
+    inputTwo: newBody
+  }).then(() => {
+    alert("Todo updated successfully!");
+    // Optionally, you might want to re-render todos here
+  }).catch((error) => {
+    console.error("Error updating todo: ", error);
+  });
+  }
+}
+
+window.editTodo = editTodo
+
+// Render todos initially
+renderTodos();
+
+// Function to render todos
+function renderTodos() {
+    showy.innerHTML = '';
+
+// Reference to the todos in the database
+const todosRef = ref(db, 'todos');
+
+// Listen for changes in the todos
+onValue(todosRef, (snapshot) => {
+  snapshot.forEach((childSnapshot) => {
+    const todoKey = childSnapshot.key;
+    const todoData = childSnapshot.val();
+
+    // Create HTML elements for todo
+    const todoElement = document.createElement('div');
+    todoElement.innerHTML = `
+      <div class="todo">
+        <h3 class="todo-title">${todoData.inputOne}</h3>
+        <p class="todo-body">${todoData.inputTwo}</p>
+        <button onclick="editTodo('${todoKey}', '${todoData.inputOne}', '${todoData.inputTwo}')">Edit</button>
+        <button onclick="deleteTodo('${todoKey}')">Delete</button>
+      </div>
+    `;
+
+    // Append todo element to the container
+    showy.appendChild(todoElement);
+  });
+});
+}
+
 
         const deleteTodo = (todoKey) => {
             let todoRef = ref(database, `todos/${todoKey}`);
